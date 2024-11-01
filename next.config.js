@@ -5,6 +5,26 @@
 await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
-const config = {};
+const config = {
+  reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "books.google.com",
+        pathname: "/books/*",
+      },
+      {
+        protocol: "http",
+        hostname: "books.google.com",
+        pathname: "/books/*",
+      },
+    ],
+  },
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
+};
 
 export default config;
