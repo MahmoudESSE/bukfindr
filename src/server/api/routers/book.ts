@@ -6,7 +6,7 @@ export const bookRouter = createTRPCRouter({
   searchByTitle: publicProcedure
     .input(
       z.object({
-        title: z.string().min(1),
+        title: z.string(),
       }),
     )
     .query(async ({ input: { title } }) => {

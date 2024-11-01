@@ -1,12 +1,17 @@
+"use server";
 import { api } from "@/trpc/server";
 import BookCard from "./book-card";
 
-export default async function BookList() {
+type Props = {
+  search: string;
+};
+
+export default async function BookList(props: Props) {
   const books = await api.books.searchByTitle({
-    title: "harry",
+    title: props.search,
   });
   void (await api.books.searchByTitle.prefetch({
-    title: "ice and fire",
+    title: "harry",
   }));
   return (
     <ul className="grid grid-cols-4 gap-4">

@@ -4,10 +4,12 @@ import { Card, CardHeader } from "./ui/card";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Glasses, Shell } from "lucide-react";
-import { useSearchStore } from "@/utils/global";
+import { useSearchStore } from "@/providors/search-store-providor";
 
 export default function SearchInput() {
-  const { setSearch, searching, isSearching } = useSearchStore();
+  const { setSearch, searching, isSearching } = useSearchStore(
+    (state) => state,
+  );
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-center gap-4 align-middle">
