@@ -1,6 +1,6 @@
 "use client";
+import BookList from "@/components/book-list";
 import SearchInput from "./search-input";
-import BookList from "./book-list";
 import { useSearchStore } from "@/providors/search-store-providor";
 import { Suspense } from "react";
 
@@ -10,7 +10,6 @@ export default function BookView() {
     <>
       <SearchInput />
       <Suspense fallback={<BookListEmpty />}>
-        {"use server"}
         <BookList search={search} />
       </Suspense>
     </>
