@@ -1,12 +1,6 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
-import { BookSchema } from "@/utils/types/book";
-
-const ItemsSchema = z.object({
-  items: z.array(BookSchema),
-});
-
-type ItemsType = z.infer<typeof ItemsSchema>;
+import { type ItemsType } from "@/utils/types/items";
 
 export const bookRouter = createTRPCRouter({
   searchByTitle: publicProcedure
