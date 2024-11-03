@@ -12,7 +12,9 @@ export default function BookCard(props: Props) {
       <CardHeader>
         <CardTitle>
           <Image
-            src={book.volumeInfo.imageLinks?.smallThumbnail ?? "/empty-image"}
+            src={
+              book.volumeInfo.imageLinks?.smallThumbnail ?? "/empty-image.png"
+            }
             alt={book.volumeInfo.title ?? "No Title"}
             width={124}
             height={124}
