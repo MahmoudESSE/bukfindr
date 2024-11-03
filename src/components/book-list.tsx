@@ -1,18 +1,16 @@
 import BookCard from "@/components/book-card";
-import { api } from "@/trpc/react";
+import SearchBookByTitle from "@/server/actions/search-book-by-title";
 
 type Props = {
   search: string;
 };
 
-export default function BookList(props: Props) {
+export default async function BookList(props: Props) {
   if (!props.search) {
     return <></>;
   }
 
-  const [books] = api.books.searchByTitle.useSuspenseQuery({
-    title: props.search,
-  });
+  const books = await SearchBookByTitle(props.search);
 
   return (
     <ul className="grid grid-cols-4 gap-4">

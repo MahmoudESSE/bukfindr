@@ -25,7 +25,6 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
-  staticPageGenerationTimeout: 300,
 };
 
 export default config;
