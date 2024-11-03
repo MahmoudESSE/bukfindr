@@ -9,7 +9,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 export const metadata: Metadata = {
   title: "BukFindr",
   description: "find a book from google books",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [{ rel: "icon", url: "/books/favicon.ico" }],
 };
 
 export default function RootLayout({
