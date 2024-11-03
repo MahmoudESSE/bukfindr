@@ -10,11 +10,11 @@ export const bookRouter = createTRPCRouter({
       }),
     )
     .query(async ({ input: { title } }) => {
-      let books: ItemsType = { items: [] };
-      if (!title) return books;
-      books = await fetch(
+      if (!title) return { items: [] };
+      const data = await fetch(
         `https://www.googleapis.com/books/v1/volumes?q=${title}`,
-      ).then((items) => items.json() as Promise<ItemsType>);
-      return books;
+      );
+      const books = (await data.json()) as Promise<ItemsType>;
+      return await books;
     }),
 });

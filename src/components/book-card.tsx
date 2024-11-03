@@ -6,6 +6,9 @@ type Props = {
   book: BookType;
 };
 export default function BookCard(props: Props) {
+  if (!props.book) {
+    return <></>;
+  }
   const book = props.book;
   return (
     <Card>

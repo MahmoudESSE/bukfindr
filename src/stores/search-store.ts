@@ -14,7 +14,7 @@ export type SearchStore = SearchState & SearchActions;
 
 export const initSearchStore = (): SearchState => {
   return {
-    search: "harry",
+    search: "harry potter",
     searching: false,
   };
 };
