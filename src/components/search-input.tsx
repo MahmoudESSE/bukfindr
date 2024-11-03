@@ -2,14 +2,10 @@
 
 import { Card, CardHeader } from "./ui/card";
 import { Input } from "./ui/input";
-import { Button } from "./ui/button";
-import { Glasses, Shell } from "lucide-react";
 import { useSearchStore } from "@/providors/search-store-providor";
 
 export default function SearchInput() {
-  const { setSearch, searching, isSearching } = useSearchStore(
-    (state) => state,
-  );
+  const { setSearch, searching } = useSearchStore((state) => state);
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-center gap-4 align-middle">
@@ -19,17 +15,11 @@ export default function SearchInput() {
           type="search"
           onChange={(e) => {
             e.preventDefault();
-            setSearch(e.target.value);
+            if (!searching) {
+              setSearch(e.target.value);
+            }
           }}
         />
-        <Button
-          disabled={searching}
-          type="submit"
-          onClick={() => isSearching()}
-        >
-          {searching ? <Shell className="animate-spin" /> : <Glasses />}
-          Search
-        </Button>
       </CardHeader>
     </Card>
   );

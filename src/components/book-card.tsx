@@ -1,4 +1,4 @@
-import { type BookType } from "@/utils/types/book";
+import { type BookType } from "@/types/book";
 import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import Image from "next/image";
 
@@ -12,13 +12,13 @@ export default function BookCard(props: Props) {
       <CardHeader>
         <CardTitle>
           <Image
-            src={book.volumeInfo.imageLinks.smallThumbnail}
-            alt={book.volumeInfo.title}
+            src={book.volumeInfo.imageLinks?.smallThumbnail ?? "/empty-image"}
+            alt={book.volumeInfo.title ?? "No Title"}
             width={124}
             height={124}
           />
         </CardTitle>
-        <CardDescription>{`${book.volumeInfo.title}`}</CardDescription>
+        <CardDescription>{`${book.volumeInfo.title ?? "No Description"}`}</CardDescription>
       </CardHeader>
     </Card>
   );

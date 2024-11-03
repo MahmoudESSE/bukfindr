@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
-import { type ItemsType } from "@/utils/types/items";
+import { type ItemsType } from "@/types/items";
 
 export const bookRouter = createTRPCRouter({
   searchByTitle: publicProcedure
