@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 import { type ItemsType } from "@/types/items";
+import { TRPCError } from "@trpc/server";
 
 export const bookRouter = createTRPCRouter({
   searchByTitle: publicProcedure
@@ -10,11 +11,17 @@ export const bookRouter = createTRPCRouter({
       }),
     )
     .query(async ({ input: { title } }) => {
-      if (!title) return { items: [] };
-      const data = await fetch(
+      let books: ItemsType = { items: [] };
+      if (!title) return books;
+      books = await fetch(
         `https://www.googleapis.com/books/v1/volumes?q=${title}`,
-      );
-      const books = (await data.json()) as Promise<ItemsType>;
-      return await books;
+      ).then((items) => items.json() as Promise<ItemsType>);
+      if (!books) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "no books found",
+        });
+      }
+      return books;
     }),
 });
