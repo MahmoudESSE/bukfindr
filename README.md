@@ -4,8 +4,9 @@ Web App to manage your find books and manage your collections.
 
 # TODOS
 
-- [ ] Deploy to vercel
+- [x] Deploy to vercel
 - [ ] Improve Searching
+- [ ] Add Loading states
 - [ ] SignIn/SignUp
 - [ ] View user info
 - [ ] Bookmark titles
